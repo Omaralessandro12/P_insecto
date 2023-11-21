@@ -10,11 +10,13 @@ import settings
 import helper
 
 # Setting page layout
-  st.set_page_config(
-   page_title="Deteccion de Plagas en la agricultura Mexicana",
-   layout="wide",
-   initial_sidebar_state="expanded"
-  )
+st.set_page_config(
+    page_title="Deteccion de Plagas en la agricultura Mexicana",
+    # page_icon="🤖",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 
 # Encabezado 
  st.title("Deteccion de Plagas en la agricultura Mexicana")
