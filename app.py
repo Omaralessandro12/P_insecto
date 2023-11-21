@@ -16,10 +16,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
 # Encabezado 
- st.title("Deteccion de Plagas en la agricultura Mexicana")
-
+st.title("Deteccion de Plagas en la agricultura Mexicana")
 
 # Barra lateral 
 st.sidebar.header("Configuración del modelo de aprendizaje automático")
