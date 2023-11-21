@@ -1,13 +1,7 @@
 # Python In-built packages
 from pathlib import Path
-import PIL
+#import PIL
 
-# External packages
-import streamlit as st
-
-# Local Modules
-import settings
-import helper
 
 # Setting page layout
 st.set_page_config(
@@ -46,10 +40,5 @@ st.sidebar.header("Imagen/Config")
 source_radio = st.sidebar.radio(
     "Seleccione Fuente", settings.SOURCES_LIST)
 
-source_img = None
-# If image is selected
-if source_radio == settings.IMAGE:
-    source_img = st.sidebar.file_uploader(
-        "Elige una imagen...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
- 
+
 
