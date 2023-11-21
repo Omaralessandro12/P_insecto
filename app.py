@@ -1,6 +1,3 @@
-# Python In-built packages
-from pathlib import Path
-#import PIL
 
 
 # Setting page layout
@@ -22,19 +19,6 @@ model_type = st.sidebar.radio(
 
 confidence = float(st.sidebar.slider(
     "Seleccione la confianza del modelo", 25, 100, 40)) / 100
-
-# Selecting Detection Or Segmentation
-#if model_type == 'Deteccion':
-#  model_path = Path(settings.DETECTION_MODEL)
-#elif model_type == 'Segmentation':
-#    model_path = Path(settings.SEGMENTATION_MODEL)
-
-# Load Pre-trained ML Model
-#try:
-#    model = helper.load_model(model_path)
-# except Exception as ex:
-#    st.error(f"Unable to load model. Check the specified path: {model_path}")
-#    st.error(ex)
 
 st.sidebar.header("Imagen/Config")
 source_radio = st.sidebar.radio(
