@@ -5,7 +5,7 @@ import numpy as np
 import tensorflow as tf
 
 # Obtener la ruta al modelo dentro de la carpeta "weights"
-model_path = os.path.join("weights", "nombre_del_modelo.h5")
+model_path = os.path.join("weights", "INSECTOS_VGG16.h5")
 
 # Cargar el modelo VGG16 preentrenado
 model = tf.keras.models.load_model(model_path)
