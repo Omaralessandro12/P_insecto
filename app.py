@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 
 # Cargar el modelo VGG16 preentrenado
-model = tf.keras.models.load_model('ruta_al_modelo.h5')
+model = tf.keras.models.load_model('INSECTOS_VGG16.h5')
 
 # Función para preprocesar la imagen
 def preprocess_image(image):
