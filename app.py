@@ -1,28 +1,42 @@
+import streamlit as st
+from PIL import Image
+import numpy as np
+import tensorflow as tf
 
+# Cargar el modelo VGG16 preentrenado
+model = tf.keras.models.load_model('ruta_al_modelo.h5')
 
-# Setting page layout
-st.set_page_config(
-    page_title="Deteccion de Plagas en la agricultura Mexicana",
-    # page_icon="🤖",
-    # layout="wide",
-    initial_sidebar_state="expanded"
-)
-# Encabezado 
-st.title("Deteccion de Plagas en la agricultura Mexicana")
+# Función para preprocesar la imagen
+def preprocess_image(image):
+    img = image.resize((224, 224))
+    img_array = np.array(img) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
+    return img_array
 
-# Barra lateral 
-st.sidebar.header("Configuración del modelo de aprendizaje automático")
+# Función para realizar la predicción
+def predict(image):
+    preprocessed_img = preprocess_image(image)
+    prediction = model.predict(preprocessed_img)
+    return prediction
 
-# Opciones de Modelo
-model_type = st.sidebar.radio(
-    "Seleccionar tarea", ['Deteccion' ])
+# Interfaz de usuario
+st.title("Aplicación de Detección de Imágenes")
 
-confidence = float(st.sidebar.slider(
-    "Seleccione la confianza del modelo", 25, 100, 40)) / 100
+uploaded_image = st.file_uploader("Cargar una imagen")
 
-st.sidebar.header("Imagen/Config")
-source_radio = st.sidebar.radio(
-    "Seleccione Fuente", settings.SOURCES_LIST)
+if uploaded_image is not None:
+    # Mostrar la imagen cargada
+    image = Image.open(uploaded_image)
+    st.image(image, caption='Imagen cargada', use_column_width=True)
 
+    # Realizar la predicción cuando se presiona el botón
+    if st.button('Detectar'):
+        with st.spinner('Detectando...'):
+            prediction = predict(image)
+        st.success('Detección completada!')
+
+        # Mostrar los resultados de la predicción
+        st.write("Resultados de la predicción:")
+        st.write(prediction)  # Aquí puedes ajustar cómo mostrar los resultados
 
 
